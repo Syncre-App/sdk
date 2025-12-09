@@ -36,6 +36,16 @@ client.on('socketError', console.error);
 })();
 ```
 
+## Testing
+
+- Unit tests (mocked HTTP/WebSocket): `npm test`
+- Optional live integration test (real bot login + WS auth): set env vars before running `npm test`:
+  - `SDK_LIVE_BOT_ID`
+  - `SDK_LIVE_BOT_TOKEN`
+  - `SDK_LIVE_BASE_URL` (defaults to https://api.syncre.xyz/v1)
+  - `SDK_LIVE_WS_URL` (defaults to wss://api.syncre.xyz/ws)
+  The live test is skipped if the bot env vars are missing.
+
 ## API
 
 - `new SyncreBotClient(options)` – options: `baseUrl`, `wsUrl`, `botId`, `botToken`, `timezone`.
