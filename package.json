@@ -20,6 +20,7 @@
     "websocket"
   ],
   "dependencies": {
+    "@syncre/sdk": "^0.1.0",
     "ws": "^8.18.0"
   }
 }

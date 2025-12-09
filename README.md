@@ -36,6 +36,34 @@ client.on('socketError', console.error);
 })();
 ```
 
+### Bot token megszerzése
+
+1) Appból: Settings → Developer → Bot Account → „Create bot token” (egyedi token, csak egyszer látható, ilyenkor a fiók role-ja `bot` lesz).
+2) API-ból: authenticated user JWT-vel hívd meg a `POST /v1/user/request-bot`-ot. Válasz:
+
+```bash
+curl -X POST \
+  -H "Authorization: Bearer <user-jwt>" \
+  -H "Content-Type: application/json" \
+  -d '{"reason":"CI bot"}' \
+  https://api.syncre.xyz/v1/user/request-bot
+
+# Válasz: { success: true, bot_status: "approved", role: "bot", bot_token: "..." }
+```
+
+3) Bot login az SDK/bármi számára: `POST /v1/auth/bot-login` a bot ID + bot token párossal:
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"botId":"<bot user id>","botToken":"<bot token>"}' \
+  https://api.syncre.xyz/v1/auth/bot-login
+
+# Válasz: { token: "<jwt>", user: { id, username, role: "bot", ... } }
+```
+
+Ezt a JWT-t használja a `SyncreBotClient` is automatikusan a `connect()` előtt.
+
 ## Testing
 
 - Unit tests (mocked HTTP/WebSocket): `npm test`
