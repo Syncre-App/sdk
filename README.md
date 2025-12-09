@@ -39,7 +39,7 @@ client.on('socketError', console.error);
 ### Bot token megszerzése
 
 1) Appból: Settings → Developer → Bot Account → „Create bot token” (egyedi token, csak egyszer látható, ilyenkor a fiók role-ja `bot` lesz).
-2) API-ból: authenticated user JWT-vel hívd meg a `POST /v1/user/request-bot`-ot. Válasz:
+2) API-ból: authenticated user JWT-vel hívd meg a `POST /v1/user/request-bot`-ot. A token e-mailben érkezik vissza (ha SMTP be van állítva); a válasz nem tartalmazza a bot tokent:
 
 ```bash
 curl -X POST \
