@@ -19,9 +19,6 @@
     "sdk",
     "websocket"
   ],
-  "scripts": {
-    "test": "node --test"
-  },
   "dependencies": {
     "ws": "^8.18.0"
   }
