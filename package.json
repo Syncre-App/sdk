@@ -17,7 +17,7 @@
     "websocket"
   ],
   "scripts": {
-    "test": "node -e \"console.log('syncre sdk ready')\""
+    "test": "node --test"
   },
   "dependencies": {
     "ws": "^8.18.0"
